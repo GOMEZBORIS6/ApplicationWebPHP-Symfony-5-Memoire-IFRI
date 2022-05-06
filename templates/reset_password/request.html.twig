@@ -1,0 +1,55 @@
+{% extends 'baseenseignant.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/request.css") }}">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/> -->
+	{#{{ encore_entry_link_tags('app') }}#}
+{% endblock %}
+
+{% block body %}
+
+<div class="slider">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li>
+                <div class="slider-img one-img">
+                    <div class="ccontent">
+                        <div class="login-div">
+                            <form method="POST" >
+                                <div class="tiltle" data-blast="color">Reset your password</div>
+                               
+                                {% for flashError in app.flashes('reset_password_error') %}
+                                <div class="alert alert-error" role="alert">{{ flashError }}</div>
+                                {% endfor %}
+                            
+                                
+                                {#{form_label(requestForm.email)}#}
+                                <div>
+                                    <small>
+                                        Enter your email address and we we will send you a
+                                        link to reset your password.
+                                    </small>
+                                </div>
+                                {{ form_start(requestForm) }}
+                                {{ form_widget(requestForm.email,  {'attr': {'style':' margin-top:10px; border: none; outline: none; background: none; font-size: 15px; color: #555; width: 100%; padding: 10px 10px 10px 5px; text-align: center; margin-bottom: 30px; border-radius: 25px;  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;'}}) }}
+                           
+                                    
+
+                                    <button class="signin-button" data-blast="bgColor">Send password reset email</button>
+                                {{ form_end(requestForm) }}
+                           
+                            </form>
+                            
+                        </div>
+                    
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+ 
+{% endblock %}

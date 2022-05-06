@@ -1,0 +1,39 @@
+{% extends 'baseenseignant.html.twig' %}
+
+{% block title %}Password Reset Email Sent{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/checkemail.css") }}">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/> -->
+	{#{{ encore_entry_link_tags('app') }}#}
+{% endblock %}
+
+{% block body %}
+<div class="slider">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li>
+                <div class="slider-img one-img">
+                    <div class="ccontent">
+                        <div class="login-div">
+                            <form method="POST">
+                            
+                            <div class="tiltle" data-blast="color">Notification</div>
+                            <div class="sub-tiltle">Important Message</div>
+                            <p>
+                                If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
+                                This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+                            </p>
+                            <p>If you don't receive an email please check your spam folder or <a data-blast="color" href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+                            </form>
+                            
+                        </div>
+                    
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+   
+{% endblock %}

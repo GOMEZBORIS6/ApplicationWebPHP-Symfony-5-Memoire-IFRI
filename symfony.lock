@@ -1,4 +1,10 @@
 {
+    "components/bootstrap": {
+        "version": "3.4.1"
+    },
+    "components/jquery": {
+        "version": "3.5.1"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.2"
     },
@@ -82,10 +88,34 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "dompdf/dompdf": {
+        "version": "v1.0.2"
+    },
     "egulias/email-validator": {
         "version": "3.1.1"
     },
+    "eternicode/bootstrap-datepicker": {
+        "version": "v1.9.0"
+    },
     "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.5"
+    },
+    "h4cc/wkhtmltopdf-amd64": {
+        "version": "0.12.4"
+    },
+    "knplabs/knp-snappy": {
+        "version": "v1.2.1"
+    },
+    "knplabs/knp-snappy-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "c81bdcf4a9d4e7b1959071457f9608631865d381"
+        }
+    },
+    "kriswallsmith/assetic": {
         "version": "v1.0.5"
     },
     "laminas/laminas-code": {
@@ -111,6 +141,12 @@
     },
     "phar-io/version": {
         "version": "3.1.0"
+    },
+    "phenx/php-font-lib": {
+        "version": "0.5.2"
+    },
+    "phenx/php-svg-lib": {
+        "version": "v0.3.3"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -167,6 +203,12 @@
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "robloach/component-installer": {
+        "version": "0.0.12"
+    },
+    "sabberworm/php-css-parser": {
+        "version": "8.3.1"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
@@ -603,6 +645,21 @@
     },
     "symfony/yaml": {
         "version": "v5.3.3"
+    },
+    "symfonycasts/reset-password-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "97c1627c0384534997ae1047b93be517ca16de43"
+        },
+        "files": [
+            "./config/packages/reset_password.yaml"
+        ]
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.5.0"
     },
     "theseer/tokenizer": {
         "version": "1.2.0"

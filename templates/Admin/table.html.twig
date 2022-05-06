@@ -1,0 +1,141 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %} IFRI-UAC &mdash; Table  {% endblock %}
+
+{% block stylesheets%}
+<style>
+  .alert {
+    padding: 10px;
+    color: white;
+    text-align: center;
+  }
+  .alert-success {
+    background-color: green;
+  }
+  .alert-error {
+    background-color: red;
+  }
+  .alert-info {
+    background-color: blue;
+  }
+
+</style>
+  
+{% endblock %}
+
+{% block body %}
+<div class="main-content">
+  <section class="section">
+    <h1 class="section-header">
+      <div>Tables</div>
+    </h1>
+    <div class="section-body">
+      {% for type, messages in app.flashes(['success', 'error', 'info']) %}
+      {% for message in messages %}
+          <div class="alert alert-{{ type }} mb-0" role="alert">
+            {{ message }}
+          </div>
+      {% endfor %}
+     {% endfor %}
+      <div class="row">
+        
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="float-right">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-secondary"><i class="ion ion-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <h4>Listes des enseignants</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  {% if utilisateur %}
+                  <table class="table table-striped">
+                    <tr>
+                      <th class="text-center">
+                        <div class="custom-checkbox custom-control">
+                          <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+                          <label for="checkbox-all" class="custom-control-label"></label>
+                        </div>
+                      </th>
+                      <th>Avatar</th>
+                      <th>Last Name</th>
+                      <th>First Name</th>
+                      <th>Email Adress</th>
+                      <th>Phone</th>
+                      <th>Sexe</th>
+                      <th>Status Email</th>
+                      <th>Action</th>
+                    </tr>
+                    {% for enseignant in utilisateur %}
+                    <tr>
+
+                      <td width="40">
+                        <div class="custom-checkbox custom-control">
+                          <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+                          <label for="checkbox-1" class="custom-control-label"></label>
+                        </div>
+                      </td>
+
+                      <td>
+                        <img src="{{ enseignant.gravatarUrl}}" alt="{{ enseignant.firstname ~ " " ~ enseignant.lastname}}'s Avatar" 
+                        class="rounded-circle" width="35" data-toggle="title" 
+                        title="{{ enseignant.firstname ~ " " ~ enseignant.lastname}}">
+                      </td>
+
+                      <td>{{ enseignant.lastname }}</td>
+
+                      <td class="align-middle">
+                        {{ enseignant.firstname }}
+                      </td>
+                     
+                      <td> {{ enseignant.email }}</td>
+                      <td> {{ enseignant.phone }}</td>
+                      <td> {{ enseignant.sexe }}</td>
+                      <td>
+                        {% if enseignant.isVerified == '0' %}
+                      <div class="badge badge-danger">Not Verified</div>
+                        {% elseif enseignant.isVerified == '1' %}
+                      <div class="badge badge-success">Verified</div>
+                       {% endif %}
+                     
+                      </td>
+                      <td><a href="/admin/delete/{{enseignant.id}}" onclick="return confirm('Are you sure you want to delete this professor?')" class="btn btn-action btn-secondary">Supprimer</a></td>
+                      </tr>
+
+                    {% endfor %}
+                    
+                  </table>
+                  {% else %}
+                      <p style="color: white; font-size: 18px;">Aucun enseignant(e) enrégistré!!!</p>
+                      <p>
+                        <a href="{{path('app_register')}}" class="btn btn-action btn-secondary">Ajouter un(e) enseignant(e) </a>
+                      </p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+         
+        
+      </div>
+      
+    </div>
+  </section>
+</div>
+
+{% endblock %}
+
+
+
+     
+  
+
+  

@@ -1,0 +1,112 @@
+{% extends 'baseenseignant.html.twig' %}
+
+{% block title %}Programmation de cours : : Enseignant-Modification
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/prog.css") }}">
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+{% block body %}
+<div class="slider">
+	<div class="callbacks_container">
+		<ul class="rslides" id="slider4">
+			<li>
+				<div class="slider-img one-img">
+					<div class="bodyprog">
+						<div class="main">
+							<div class="title">Programmation de cours</div>
+							<form method="POST">
+								{{form_start(modifprog)}}
+
+								<div id="name">
+									<h2 class="name">Semaine :</h2>
+									{{form_widget(modifprog.semainedeb, {'attr': {'style':'width:175px; position: relative; left: 160px; top: -37px;'}})}}<br>
+									
+									<label class="firstlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 160px; top: -58px;
+									">{{form_label(modifprog.semainedeb)}}</label>
+									
+									{{form_widget(modifprog.semainefin,  {'attr': {'style':'width:175px; position: relative; left: 475px; top: -138px;'}})}}<br>
+									
+									<label class="lastlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 475px; top: -160px;
+									 ">{{form_label(modifprog.semainefin)}}</label>
+								</div>
+
+								<div id="name">
+									<h2 class="named">Heure&Jour:</h2>
+									{{form_widget(modifprog.heuredeb, {'attr': {'style':'width:122px; position: relative; left: 160px; top: -37px;'}})}}<br>
+									
+									<label class="firstlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 160px; top: -58px;
+									">{{form_label(modifprog.heuredeb)}}</label>
+									
+									{{form_widget(modifprog.heurefin,  {'attr': {'style':'width:122px; position: relative; left: 310px; top: -138px;'}})}}<br>
+									
+									<label class="lastlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 310px; top: -160px;
+									 ">{{form_label(modifprog.heurefin)}}</label>
+
+									 {{form_widget(modifprog.jour, {'attr': {'style':'width:240px; position: relative; left: 475px; top: -240px;'}})}}<br>
+									
+									<label class="firstlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 475px; top: -263px;
+									">{{form_label(modifprog.jour)}}</label>
+								</div>
+								<div id="name">
+									<h2 class="named">Classe :</h2> 
+								
+									{{form_widget(modifprog.classeetudiant,  {'attr': {'style':'width:400px; position: relative; left: 160px; top: -38px;'}})}}<br>
+
+									<label class="lastlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 160px; top: -62px;
+									 ">{{form_label(modifprog.classeetudiant)}}</label>
+								</div>
+								{#{form_widget(modifprog)}#}
+								<div id="name">
+									<h2 class="named">UE :</h2> 
+									{{form_widget(modifprog.ue,  {'attr': {'style':'width:520px; position: relative; left: 160px; top: -38px;'}})}}<br>
+
+									<label class="lastlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 160px; top: -62px;
+									 ">{{form_label(modifprog.ue)}}</label>
+								</div>
+								<div id="name">
+									<h2 class="named" style="margin-left: 25px; margin-top: -25px; width: 125px; color: white; font-size: 18px; font-weight: 700; 
+										">ECUE :</h2> 
+									{{form_widget(modifprog.ecue,  {'attr': {'style':'width:520px; position: relative; left: 160px; top: -38px;'}})}}<br>
+
+									<label class="lastlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 160px; top: -62px;
+									 ">{{form_label(modifprog.ecue)}}</label>
+								</div> 
+								
+								<div id="name">
+									<button data-blast="bgColor" type="submit" style="  height: 50px; display: flex; justify-content: center;  align-items: center; outline: none; color: white; cursor: pointer; transition: 0.25px;	
+									width: 100px; position: relative; left: 300px; top: -50px; border-radius: 12px; border: 2px solid none;
+									">Modifier</button>
+
+									<!-- <button data-blast="bgColor" type="reset" style="  height: 50px; display: flex; justify-content: center;  align-items: center; outline: none; color: white; cursor: pointer; transition: 0.25px;	
+									width: 70px; position: relative; left: 610px; top: -100px; border-radius: 12px; border: 2px solid none;
+									">Annuler</button> -->
+
+									<a href="{{path('paniers')}}" class="btn btn-primary" style="  height: 50px; display: flex; justify-content: center;  align-items: center; outline: none; color: white; cursor: pointer; transition: 0.25px;	
+									width: 70px; position: relative; left: 25px; top: -100px; border-radius: 12px; border: 2px solid none;
+									" >Retour</a>
+								</div>
+								
+
+									<!-- <div class="butt" style=" height: 45px; display: flex; justify-content: center;  align-items: center;">
+
+									<button type="submit" style=" height: 100%; width: 400px; color: #fff; border-radius: 10px;background: rgb(34, 212, 28); font-size: 16px;font-weight: bolder; letter-spacing: 1px;
+																										  ">Valider votre programmation</button>
+									</div> -->
+											
+								
+								
+									{{form_end(modifprog)}}
+							</form>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+{% endblock %}
+			

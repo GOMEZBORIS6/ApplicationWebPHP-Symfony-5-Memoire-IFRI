@@ -1,0 +1,64 @@
+{% extends 'baseenseignant.html.twig' %}
+
+{% block title %}Paniers de cours : : Enseignant
+{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/paniers.css") }}">
+
+{% endblock %}
+
+{% block body %}
+<div class="slider">
+    <div class="callbacks_container">
+      <ul class="rslides" id="slider4">
+        <li>
+          <div class="slider-img one-img">
+            <div class="bodyprog">
+              <div class="main">
+                <div class="title" >Mon paniers de cours</div>
+                 {% if monpaniers %}
+                  <table id="clients" class="table table-striped">
+                      <thead>
+                          <tr data-blast="bgColor">
+                              <th>Debut-Fin semaine</th>
+                              <th>Jour</th>
+                              <th>Heure Debut-Fin</th>
+                              <th>Classe</th>
+                              <th>Matière</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for Cours in monpaniers %}
+                          <tr>
+                              <td>{{ Cours.semainedeb|date("d/m/Y") ~ " au " ~ Cours.semainefin|date("d/m/Y") }}</td>
+                              <td>{{ Cours.jour.libjour }}</td>
+                              <td>{{ Cours.heuredeb|date("H:i:s") ~ " à " ~ Cours.heurefin|date("H:i:s") }}</td>
+                              <td>{{ Cours.classeetudiant.name }}</td>
+                              <td>{{ Cours.ecue.name }}</td>
+                              <td> 
+                                  <a href="/emploi/{{Cours.id}}" class="btn btn-dark" data-blast="bgColor">Details</a>
+                                  <a href="/emploi/edit/{{Cours.id}}" class="btn btn-success">Edit</a>
+                                  <a href="/emploi/delete/{{Cours.id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this programming?')">Delete</a>
+                              </td>
+                          </tr>
+                          {% endfor %}
+                         
+                      </tbody>
+                  </table>
+                  <p>
+                    <a href="{{path('prog')}}" class="btn btn-primary">Programmer un cours</a>
+                  </p>
+                  {% else %}
+                      <p style="color: white; font-size: 18px;">Aucun cours programmé.Veuillez programmer de cours!!!</p>
+                      <p>
+                        <a href="{{path('prog')}}" class="btn btn-primary">Programmer un cours</a>
+                      </p>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+{% endblock %}

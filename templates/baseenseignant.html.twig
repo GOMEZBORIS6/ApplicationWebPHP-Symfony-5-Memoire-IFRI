@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="ClassWork Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+      SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+      addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+        window.scrollTo(0, 1);
+      }
+    </script>
+    <script> 
+      /*$(document).ready(function () {
+        $('#signupBtn').on("click", function () {
+          $('#exampleModalLive').modal('hide')
+        });
+      });
+      $(document).on('click', '#signupBtn', function(){
+        $('#exampleModalLive').modal('hide')
+      });*/
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="{{ asset("assets/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" media="all">
+      <!--//booststrap end-->
+      <!-- font-awesome icons -->
+      <link href="{{ asset("assets/css/fontawesome-all.min.css") }}" rel="stylesheet" type="text/css" media="all">
+      <!-- //font-awesome icons -->
+      <link href="{{ asset("assets/css/blast.min.css") }}" rel="stylesheet" >
+      <link rel="stylesheet" type="text/css" href="{{ asset("assets/css/style10.css") }}" >
+      <!--stylesheets-->
+      <link href="{{ asset("assets/css/style.css") }}" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    
+
+
+		<!-- STYLE CSS -->
+	<link rel="stylesheet" href="{{ asset("inscription/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css") }}">
+	<link rel="stylesheet" href="{{ asset("inscription/css/abstyle.css") }}">
+      <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+      <link href="//fonts.googleapis.com/css?family=Merriweather:300,400,700,900" rel="stylesheet">
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+      
+    {% endblock %}
+    <style>
+      .alert {
+        padding: 10px;
+        color: white;
+        text-align: center;
+      }
+      .alert-success {
+        background-color: green;
+      }
+      .alert-error {
+        background-color: red;
+      }
+      .alert-info {
+        background-color: blue;
+      }
+
+    </style>
+    
+    
+  </head>
+  <body>
+  
+
+    <div class="blast-box">
+      <div class="blast-icon"><span class="fas fa-tint"></span></div>
+      <div class="blast-frame">
+        <p>choix de couleur</p>
+        <div class="blast-colors">
+          <div class="blast-color">#b22222</div>
+          <div class="blast-color">#ff1493</div>
+          <div class="blast-color">#8b008b</div>
+          <div class="blast-color">#ff8c00</div>
+        </div>
+        <p class="blast-custom-colors">couleurs utilisateurs</p>
+        <input type="color" name="blastCustomColor" value="#cf2626">
+      </div>
+    </div>
+    <div class="header-outs" id="header">
+      {% for type, messages in app.flashes(['success', 'error', 'info']) %}
+      {% for message in messages %}
+          <div class="alert alert-{{ type }} mb-0" role="alert">
+            {{ message }}
+          </div>
+      {% endfor %}
+     {% endfor %}
+      <div class="header-w3layouts">
+        <div class="container">
+          
+          <div class="row headder-contact">
+            <div class="col-lg-6 col-md-7 col-sm-9 info-contact-agile">
+              <ul>
+                <li>
+                  <span class="fas fa-phone-volume" ></span>
+                  <p>(+229)94 13 44 48</p>
+                </li>
+                <li>
+                  <span class="fas fa-envelope"></span>
+                  <p><a href="mailto:info@example.com">contact@ifri.bj.com</a></p>
+                </li>
+                <li>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-5 col-sm-3 icons px-0">
+              <ul>
+                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                <li><a href="#"><span class="fas fa-envelope"></span></a></li>
+                <li><a href="#"><span class="fas fa-rss"></span></a></li>
+                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="hedder-up">
+            <h1 ><a href="{{path('accueil')}}" class="navbar-brand" data-blast="color">IFRI-UAC</a></h1>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="headdser-nav-color" data-blast="bgColor">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                {% if app.user %}
+                  {% if is_granted('ROLE_ADMIN') %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{path('EspaceEnseignant')}}" style="font-weight: bolder; font-size:18px;">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{{path('app_admin')}}" style="font-weight: bolder; font-size:18px;">Dashboard <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{path('app_account')}}" class="nav-link " style="font-weight: bolder; font-size:18px;" >Account</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link "onclick="event.preventDefault(); confirm('Are you leaving us already?') 
+                    && document.getElementById('js-logout-form').submit();" style="font-weight: bolder; font-size:18px;">Logout</a>
+                  </li>
+  
+                  <form id="js-logout-form" action="{{ path('app_logout')}}" method="POST" style="display: none;">
+                    <input type="hidden" name="_csrf_token" value="{{csrf_token('logout')}}">
+                  </form>
+                  {% endif %}
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{path('EspaceEnseignant')}}" style="font-weight: bolder; font-size:18px;">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{path('app_account')}}" class="nav-link " style="font-weight: bolder; font-size:18px;" >Account</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link "onclick="event.preventDefault(); confirm('Are you leaving us already?') 
+                  && document.getElementById('js-logout-form').submit();" style="font-weight: bolder; font-size:18px;">Logout</a>
+                </li>
+
+                <form id="js-logout-form" action="{{ path('app_logout')}}" method="POST" style="display: none;">
+                  <input type="hidden" name="_csrf_token" value="{{csrf_token('logout')}}">
+                </form>
+               {% else %}
+               <li class="nav-item active">
+                <a class="nav-link" href="{{path('accueil')}}" style="font-weight: bolder; font-size:18px;">Home <span class="sr-only">(current)</span></a>
+               </li>
+                <li class="nav-item">
+                  <a href="{{path('app_register')}}" class="nav-link " style="font-weight: bolder; font-size:18px;" >Register</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{path('app_login')}}" class="nav-link " style="font-weight: bolder; font-size:18px;">Login</a>
+                </li>
+
+                {# <li class="nav-item">
+                  <a href="#about" class="nav-link scroll" style="font-weight: bolder; font-size:18px;" >About</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#blog" class="nav-link scroll" style="font-weight: bolder; font-size:18px;">Blog</a>
+                </li> #}
+                <li class="nav-item">
+                  <a href="#team" class="nav-link scroll" style="font-weight: bolder; font-size:18px;">Team</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#stats" class="nav-link scroll" style="font-weight: bolder; font-size:18px;">Stats</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#contact" class="nav-link scroll" style="font-weight: bolder; font-size:18px;">Contact</a>
+                </li>
+                 {% endif %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!--//navigation section -->
+        <div class="clearfix"> </div>
+      </div>
+      
+      <!--banner -->
+      <!-- Slideshow 4 -->
+      {% block body %}
+        
+      {% endblock %}
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" 
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+      ></script>
+      <script src="{{ asset("assets/js/prog.js") }}"></script>
+      {% block javascripts %}
+      
+    {% endblock %}
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    
+   
+    
+    <!--//model-->
+    <!--js working-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    
+    <!-- <script src='{#{ asset("assets/js/jquery-2.2.3.min.js") }#}'></script> -->
+      <!--//js working--> 
+      <!--blast colors change-->
+      <script src="{{ asset("assets/js/blast.min.js") }}"></script>
+      <!--//blast colors change-->
+      <!--responsiveslides banner-->
+      <script src="{{ asset("assets/js/responsiveslides.min.js") }}"></script>
+      <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+          // Slideshow 4
+          $("#slider4").responsiveSlides({
+            auto: true,
+            pager:false,
+            nav:true ,
+            speed: 900,
+            namespace: "callbacks",
+            before: function () {
+              $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+              $('.events').append("<li>after event fired.</li>");
+            }
+          });
+        
+        });
+      </script>
+      <!--// responsiveslides banner-->     
+      <!--responsive tabs-->   
+      <script src="{{ asset("assets/js/easy-responsive-tabs.js") }}"></script>
+      <script>
+        $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+        type: 'default', //Types: default, vertical, accordion           
+        width: 'auto', //auto or any width like 600px
+        fit: true,   // 100% fit in a container
+        closed: 'accordion', // Start closed if in accordion view
+        activate: function(event) { // Callback function if tab is switched
+        var $tab = $(this);
+        var $info = $('#tabInfo');
+        var $name = $('span', $info);
+        $name.text($tab.text());
+        $info.show();
+        }
+        });
+        });
+         
+      </script>
+      <!--// responsive tabs--> 
+      <!--About OnScroll-Number-Increase-JavaScript -->
+      <script src="{{ asset("assets/js/jquery.waypoints.min.js") }}"></script>
+      <script src="{{ asset("assets/js/jquery.countup.js") }}"></script>
+      <script>
+        $('.counter').countUp();
+      </script>
+      <!-- //OnScroll-Number-Increase-JavaScript -->    
+      <!-- start-smoth-scrolling -->
+      <script src="{{ asset("assets/js/move-top.js") }}"></script>
+      <script src="{{ asset("assets/js/easing.js") }}"></script>
+      <script>
+        jQuery(document).ready(function ($) {
+          $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+              scrollTop: $(this.hash).offset().top
+            }, 900);
+          });
+        });
+      </script>
+      <!-- start-smoth-scrolling -->
+      <!-- here stars scrolling icon -->
+      <script>
+        $(document).ready(function () {
+        
+          var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+          };
+        
+        
+          $().UItoTop({
+            easingType: 'easeOutQuart'
+          });
+        
+        });
+      </script>
+      <!-- //here ends scrolling icon -->
+      <!--bootstrap working-->
+      <script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
+    <!-- //bootstrap working-->
+  </body>
+</html>

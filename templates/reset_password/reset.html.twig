@@ -1,0 +1,43 @@
+{% extends 'baseenseignant.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/resetPasswordforget.css") }}">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/> -->
+	{#{{ encore_entry_link_tags('app') }}#}
+{% endblock %}
+
+{% block body %}
+<div class="slider">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li>
+                <div class="slider-img one-img">
+                    <div class="ccontent">
+                        <div class="login-div">
+                            <form method="POST">
+                                <div class="tiltle" data-blast="color">Reset your password</div>
+                               <div class="fieldss">
+                                {{ form_start(resetForm) }}
+                                {{ form_row(resetForm.plainpassword) }}
+                                <button class="signin-button" data-blast="bgColor" >Reset password</button>
+                                 {{ form_end(resetForm) }}
+
+                               </div>
+                             
+                            </form>
+                            
+                        </div>
+                    
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+    
+
+    
+{% endblock %}

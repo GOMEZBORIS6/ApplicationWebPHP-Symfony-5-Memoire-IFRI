@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+.callit {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    right: 10%;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.containerbb {
+    
+    
+    max-width: 1000px;
+    width: 100%;
+    
+    background: white;
+    
+    border-radius: 10px;
+    
+}
+.containerbb .title {
+   
+    margin-left: 20px;
+    font-size: 25px;
+    position: relative;
+}
+
+.containerbb .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100px;
+    background: blue;
+}
+
+form {
+    margin-left: 20px;
+}
+
+.containerbb form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .user-details .input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20%);
+
+}
+/* .user-details .input-box .details {
+    display: block;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    margin-left: 30px;
+    
+
+}
+.user-details .input-box input {
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    color: white;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+} */
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+    /* border-color: mediumblue; */
+}
+
+/* form .butt {
+    height: 45px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form .butt button {
+    height: 100%;
+    width: 45%;
+    color: white;
+    border-radius: 10px;
+    background: black; 
+    font-size: 16px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+form .butt button:hover{
+    background: black;
+    cursor: pointer;
+} */
+
+@media (max-width:400px) {
+    .containerbb {
+    
+        max-width: 100%;
+        
+    }
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: 100%;
+    
+    }
+    .containerbb form .user-details {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    /* .user-details::-webkit-scrollbar{
+        width: 0;
+    } */
+    
+}
+/* .programmation-form{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+.programmation-form h1 {
+    font-size: 30px;
+} */

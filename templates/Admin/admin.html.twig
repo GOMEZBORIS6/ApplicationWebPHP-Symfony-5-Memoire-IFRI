@@ -1,0 +1,293 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}
+    Accueil : : Dashboard
+    
+{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset("Admin/css/emploidutemps.css") }}">
+    {# <link rel="stylesheet" href="{{ asset(" Admin/templateEmploi/css/font-awesome.min.css") }}">
+        <link rel="stylesheet" href="{{ asset(" Admin/templateEmploi/css/aos.css") }}">
+            <link rel="stylesheet" href="{{ asset(" Admin/templateEmploi/css/tooplate-gymso-style.css") }}"> #}
+            {% endblock %}
+
+            {% block javascripts %}{% endblock %}
+
+            {% block body %}
+                <main>
+                    <section style="margin-left: 10px;">
+                        <table style="vertical-align: top;">
+                            <tr >
+                                <td class="p60p" style="position:relative; top: 20px;">
+                                    <strong>Responsable : {{ app.user.firstname|upper }} {{ app.user.lastname|upper }}</strong><br />
+                                    <strong>E-mail :</strong> {{ app.user.email }}<br />
+                                    <strong>BP :</strong> {#{ app.user.loginCount }#}
+                                </td>
+                                <td class="p40p" style="position:relative; top: 20px;">
+                                    <strong style="margin-left:-110px ;"> Instititut de Formation et de Recherche en Informatique</strong><br />
+                                   <p style="margin-left:-110px ;">Direction des Affaires Academiques et Administratives</p>
+                                </td>
+                            </tr>
+                        </table>
+                     
+                        <table style="margin-top: 50px;">
+                            {% for circuit in call %}
+                            <tr>
+                                <td class="p75p"><h2>Emploi du temps de : {{ circuit.classeetudiant.name|upper }}</h2></td>
+                                <td class="p25p" style="text-align: right;">Emis le {{ "now"|date("d/m/Y") }}</td>
+                            </tr> 
+                            
+                            <tr>
+                                <td style="padding-top: 15px;" colspan="2"><strong>Semaine du :</strong> {{ circuit.semainedeb|date("d/m/Y") ~ " au " ~ circuit.semainefin|date("d/m/Y") }}</td>
+                            </tr>
+                          {% endfor %}
+                        </table>
+                     
+                        <table style="margin-top: 30px;" class="border">
+                            <thead>
+                                <tr>
+                                    <th class="p20p">HORAIRE</th>
+                                    <th class="p16p">LUNDI</th>
+                                    <th class="p16p">MARDI</th>
+                                    <th class="p16p">MERCREDI</th>
+                                    <th class="p16p">JEUDI</th>
+                                    <th class="p16p">VENDREDI</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                              
+                                    <tr>
+                                        <td class="h60h" style="font-weight: bolder; color: black;"> 8H00 - 12H00 </td>
+                                        {# {% for course in cours %} #}
+                                        {% for course in paniersclasse %}
+                                            {% if course.heurefin|date('H') <= 14 %}
+                                                {% if course.jour.libjour == 'Lundi' %}
+                                                    <td class="h60h">
+                                                       <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                       <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                       <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                       <label for="pet-select"style="font-weight: bolder;">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select>
+                                                        
+                                                    </td>
+                                            {% elseif course.jour.libjour == 'Mardi'  %} 
+                                                    <td class="h60h">
+                                                        <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                        <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                        <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                        <label for="pet-select">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select>
+                                                        
+                                                    </td>
+                                            {% elseif course.jour.libjour == 'Mercredi'  %}  
+                                                    <td class="h60h">
+                                                        <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                        <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                        <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                       <label for="pet-select">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select> 
+                                                        
+                                                    </td>
+                                                    {% elseif course.jour.libjour == 'Jeudi'  %}  
+                                                    <td class="h60h">
+                                                        <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                        <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                        <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                        <label for="pet-select">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select>
+                                                        
+                                                    </td>
+                                                    {% elseif course.jour.libjour == 'Vendredi'  %}  
+                                                    <td class="h60h">
+                                                        <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                        <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                        <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                        <label for="pet-select">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select> 
+                                                        
+                                                    </td>
+                                            {% else %} 
+                                                    <td class="h60h">
+                                                    <p>
+                                                        Libre
+                                                    </p> 
+                                                        <!-- Matiére : Aucune<br>
+                                                        Ensg. : Aucun<br>
+                                                        Salle : Aucune<br> -->
+                                                    </td> 
+                                                {% endif %}
+                                            {% endif %}
+                                    {% endfor %}
+                                    </tr>
+                                    <tr>
+                                        <th class="p20p">12H00 - 14H00</th>
+                                        <th class="p16p">PAUSE</th>
+                                        <th class="p16p">PAUSE</th>
+                                        <th class="p16p">PAUSE</th>
+                                        <th class="p16p">PAUSE</th>
+                                        <th class="p16p">PAUSE</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="h60h"style="font-weight: bolder; color: black;"> 14H00 - 19H00 </td>
+                                        {% for course in paniersclasse %}
+                                            {% if course.heurefin|date('H') >= 14 %}
+                                                {% if course.jour.libjour == 'Lundi' %}
+                                                
+                                                <td class="h60h">
+                                                    <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                    <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                    <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                   <label for="pet-select">Salle : </label>
+
+                                                    <select name="pets" id="pet-select" require= "required">
+                                                        <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                        <option value="A2-1">A2-1</option>
+                                                        <option value="A2-2">A2-2</option>
+                                                        <option value="MOOCS">MOOCS</option>
+                                                        <option value="Telethon">Telethon</option>
+                                                        <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                        
+                                                    </select> 
+                                                    
+                                                </td>
+                                                {% elseif course.jour.libjour == 'Mardi'  %} 
+                                                    <td class="h60h">
+                                                        <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                       <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                       <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                       <label for="pet-select">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select> 
+                                                        
+                                                    </td>
+                                            {% elseif course.jour.libjour == 'Mercredi'  %}  
+                                                    <td class="h60h">
+                                                        <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                       <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                       <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                       <label for="pet-select">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select>
+                                                        
+                                                    </td>
+                                            {% elseif course.jour.libjour == 'Jeudi'  %}  
+                                                    <td class="h60h">
+                                                        <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                       <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                       <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                       <label for="pet-select">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select>
+                                                        
+                                                    </td>
+                                            {% elseif course.jour.libjour == 'Vendredi'  %}  
+                                                    <td class="h60h">
+                                                        <strong>Mat. :</strong> {{ course.ecue.name }}<br>
+                                                        <strong>Ensg. :</strong> {{ course.user.lastname }}<br>
+                                                        <strong>Heure : </strong> {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+                                                        <label for="pet-select">Salle : </label>
+
+                                                        <select name="pets" id="pet-select" require= "required">
+                                                            <option selected="disabled" disabled>--Choisir la salle--</option>
+                                                            <option value="A2-1">A2-1</option>
+                                                            <option value="A2-2">A2-2</option>
+                                                            <option value="MOOCS">MOOCS</option>
+                                                            <option value="Telethon">Telethon</option>
+                                                            <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+                                                            
+                                                        </select>
+                                                        
+                                                    </td>
+                                                    {% else %} 
+                                                    <td class="h60h">
+                                                    <p>
+                                                        Libre
+                                                    </p> 
+                                                        <!-- Matiére : Aucune<br>
+                                                        Ensg. : Aucun<br>
+                                                        Salle : Aucune<br> -->
+                                                    </td> 
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </section>
+          
+                </main>
+            {% endblock %}
+            
+
+

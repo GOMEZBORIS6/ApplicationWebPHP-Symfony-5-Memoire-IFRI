@@ -1,0 +1,68 @@
+{% extends 'baseenseignant.html.twig' %}
+
+{% block title 'Edit User Account' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/editaccount.css") }}">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/> -->
+	{#{{ encore_entry_link_tags('app') }}#}
+{% endblock %}
+
+{% block body %}
+
+<div class="slider">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li>
+                <div class="slider-img one-img">
+                    <div class="ccontent">
+                        <div class="login-div">
+                            
+                                <div class="tiltle " data-blast="color">Update Profile</div>
+                                <div class="logo"></div>
+                                {{form_start(form)}}
+                                <div class="fieldss">
+                                    
+									<div class="user">
+                                        
+										{{form_widget(form.firstname, {'attr': {'style':' width:90%; margin-bottom: 20px; border: none; outline: none; background: none;  text-align: center; border-radius: 25px;  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;'}})}}
+
+                                    </div>
+									<div class="user">
+                                        {{form_widget(form.lastname,  {'attr': {'style':' width:90%; margin-left: 30px; margin-bottom: 30px; border: none; outline: none; background: none; text-align: center; border-radius: 25px;  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;'}})}}
+
+									</div>
+                                    <div class="user">
+										{{form_widget(form.username,   {'attr': {'style':' width:90%; margin-bottom: 30px; border: none; outline: none; background: none;  text-align: center; border-radius: 25px;  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;'}})}}
+									</div>
+                                    <div class="user">
+										{{form_widget(form.email,   {'attr': {'style':' width:90%; margin-left: 30px; margin-bottom: 30px; border: none; outline: none; background: none;  text-align: center; border-radius: 25px;  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;'}})}}
+									</div>
+                                    <div class="user">
+										{{form_widget(form.phone,  {'attr': {'style':' width:90%; margin-bottom: 20px; border: none; outline: none; background: none;  text-align: center; border-radius: 25px;  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;'}})}}
+									</div>
+                                    <div class="user">
+										{{form_widget(form.sexe,  {'attr': {'style':' width:90%; margin-left: 30px; margin-bottom: 20px; border: none; outline: none; background: none;  text-align: center; border-radius: 25px;  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;'}})}}
+									</div>
+									
+								</div>
+								
+
+								<button class="signin-button" data-blast="bgColor" type="submit">
+									Apply Changes
+								</button>
+            
+                                {{form_end(form)}}
+                          
+                        </div>
+                    
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+ 
+{% endblock %}
+

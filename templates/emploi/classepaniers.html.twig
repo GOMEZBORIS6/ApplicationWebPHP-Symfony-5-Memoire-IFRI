@@ -1,0 +1,35 @@
+{% extends 'emploi/inefficace/base.html.twig' %}
+
+{% block body %}
+     {% if paniersclasse %}
+        
+                  <table id="clients" class="table table-striped">
+                      <thead>
+                          <tr data-blast="bgColor">
+                              <th>Debut-Fin semaine</th>
+                              <th>Jour</th>
+                              <th>Heure Debut-Fin</th>
+                              <th>Classe</th>
+                              <th>Matière</th>
+                             
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for Cours in paniersclasse %}
+                          <tr>
+                              <td>{{ Cours.semainedeb|date("d/m/Y") ~ " au " ~ Cours.semainefin|date("d/m/Y") }}</td>
+                              <td>{{ Cours.jour.libjour }}</td>
+                              <td>{{ Cours.heuredeb|date("H:i:s") ~ " à " ~ Cours.heurefin|date("H:i:s") }}</td>
+                              <td>{{ Cours.classeetudiant.name }}</td>
+                              <td>{{ Cours.ecue.name }}</td>
+                              
+                          </tr>
+                          {% endfor %}
+                         
+                      </tbody>
+                  </table>
+                   {% else %}
+                      <p style="color: white; font-size: 18px;">Aucun cours programmé.Veuillez programmer de cours!!!</p>
+                     
+                  {% endif %}
+{% endblock %}

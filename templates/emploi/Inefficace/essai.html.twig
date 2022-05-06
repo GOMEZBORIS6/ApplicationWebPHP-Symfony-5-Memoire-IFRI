@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Test symfony</title>
+	</head>
+	<body>
+		<h1>Bienvenu à tous!!!</h1>
+        <!-- <a href="/client/create">aller au formulaire</a> -->
+       
+		{% for class in vat %}
+			<article>
+				<p>
+					<p>{{class.filiere.libfiliere ~ " " ~  class.niveau.libniveau }}</p>
+				</p>
+				{# <p>
+					{{}}
+				</p> #}
+				
+			</article>
+		{% endfor %}
+	</body>
+</html>
+{% for cours in paniersclasse %}
+<tr>
+	<td class="h60h"> 8H00 - 12H00 </td>
+	{# {% for course in cours %} #}
+		{% if course.heurefin|date('H') <= 14 %}
+			{% if course.jour.libjour == 'Lundi' %}
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+		 {% elseif course.jour.libjour == 'Mardi'  %} 
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+		 {% elseif course.jour.libjour == 'Mercredi'  %}  
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+				{% elseif course.jour.libjour == 'Jeudi'  %}  
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+				{% elseif course.jour.libjour == 'Vendredi'  %}  
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+		   {% else %} 
+				<td class="h60h">
+				   <p>
+					Libre
+				   </p> 
+					<!-- Matiére : Aucune<br>
+					Ensg. : Aucun<br>
+					Salle : Aucune<br> -->
+				</td> 
+			 {% endif %}
+		{% endif %}
+	{# {% endfor %}  #}
+</tr>
+<tr>
+	<th class="p20p">12H00 - 14H00</th>
+	<th class="p16p">PAUSE</th>
+	<th class="p16p">PAUSE</th>
+	<th class="p16p">PAUSE</th>
+	<th class="p16p">SEMINAIRE</th>
+	<th class="p16p">PAUSE</th>
+</tr>
+<tr>
+	<td class="h60h"> 14H00 - 18H00 </td>
+	 {% for course in cours %}
+		{% if course.heurefin|date('H') >= 14 %}
+			 {% if course.jour.libjour == 'Lundi' %}
+			
+			 <td class="h60h">
+				 Matiére : {{ course.ecue.name }}<br>
+				 Ensg. : {{ course.user.lastname }}<br>
+				 Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+				 Salle : 
+				 
+			 </td>
+			 {% elseif course.jour.libjour == 'Mardi'  %} 
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+		 {% elseif course.jour.libjour == 'Mercredi'  %}  
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+		  {% elseif course.jour.libjour == 'Jeudi'  %}  
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+		 {% elseif course.jour.libjour == 'Vendredi'  %}  
+				<td class="h60h">
+					Matiére : {{ course.ecue.name }}<br>
+					Ensg. : {{ course.user.lastname }}<br>
+					Heure : {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i") }}<br>
+					Salle : 
+					
+				</td>
+				{% else %} 
+				<td class="h60h">
+				   <p>
+					Libre
+				   </p> 
+					<!-- Matiére : Aucune<br>
+					Ensg. : Aucun<br>
+					Salle : Aucune<br> -->
+				</td> 
+			 {% endif %}
+		{% endif %}
+	{% endfor %} 
+</tr>
+{% endfor %}

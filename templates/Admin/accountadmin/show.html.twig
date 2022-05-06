@@ -1,0 +1,75 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title 'Profile' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/showaccount.css") }}">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet"/> -->
+	{#{{ encore_entry_link_tags('app') }}#}
+    <style>
+        .alert {
+          padding: 10px;
+          color: white;
+          text-align: center;
+        }
+        .alert-success {
+          background-color: green;
+        }
+        .alert-error {
+          background-color: red;
+        }
+        .alert-info {
+          background-color: blue;
+        }
+      
+      </style>
+{% endblock %}
+
+{% block body %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            {% for type, messages in app.flashes(['success', 'error', 'info']) %}
+              {% for message in messages %}
+             <div class="alert alert-{{ type }} mb-0" role="alert">
+            {{ message }}
+             </div>
+              {% endfor %}
+            {% endfor %}
+            <div class="row">
+                <div class="ccontent">
+                    <div class="login-div" style="position:relative; top: -60px;">
+                        
+                            <div class="tiltle" data-blast="color">Profile</div>
+                            <div class="logo">
+                                <img src="{{ app.user.gravatarUrl}}" alt="{{ app.user.firstname ~ " " ~ app.user.lastname}}'s Avatar" class="shadow rounded-circle">
+    
+                            </div>
+    
+        
+                            <p class="mt-3 lead" style="font-weight: bolder;">{{ app.user.username}}</p>
+                
+                            <p class="lead" style="font-weight: bolder;">{{ app.user.email}}</p>
+                
+                            <p><small>&#x1F559; Account created on {{ app.user.createdAt|date('d/m/Y')}}</small></p>
+                            <h2 data-blast="color">{{ app.user.firstname ~ " " ~ app.user.lastname}}</h2>
+                
+                            <div class="link">
+                                <a href="{{path('app_account_admin_edit')}}">Edit Account</a> | 
+                                <a href="{{path('app_account_admin_change_password')}}">Change Password</a>
+                            </div>
+                      
+                    </div>
+                
+                </div>
+            </div>
+           
+        </div>
+    </section>
+   
+</div>
+
+ 
+{% endblock %}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html  lang="zxx">
+   
+    <body>
+        <div class="card-body">
+            <div class="table-responsive">
+              {% if utilisateur %}
+              <table class="table table-striped">
+                <tr>
+                  <th class="text-center">
+                    <div class="custom-checkbox custom-control">
+                      <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+                      <label for="checkbox-all" class="custom-control-label"></label>
+                    </div>
+                  </th>
+                  <th>Avatar</th>
+                  <th>Last Name</th>
+                  <th>First Name</th>
+                  <th>Email Adress</th>
+                  <th>Phone</th>
+                  <th>Sexe</th>
+                  <th>Status Email</th>
+                  <th>Action</th>
+                </tr>
+                {% for enseignant in utilisateur %}
+                <tr>
+
+                  <td width="40">
+                    <div class="custom-checkbox custom-control">
+                      <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+                      <label for="checkbox-1" class="custom-control-label"></label>
+                    </div>
+                  </td>
+
+                  <td>
+                    <img src="{{ enseignant.gravatarUrl}}" alt="{{ enseignant.firstname ~ " " ~ enseignant.lastname}}'s Avatar" 
+                    class="rounded-circle" width="35" data-toggle="title" 
+                    title="{{ enseignant.firstname ~ " " ~ enseignant.lastname}}">
+                  </td>
+
+                  <td>{{ enseignant.lastname }}</td>
+
+                  <td class="align-middle">
+                    {{ enseignant.firstname }}
+                  </td>
+                 
+                  <td> {{ enseignant.email }}</td>
+                  <td> {{ enseignant.phone }}</td>
+                  <td> {{ enseignant.sexe }}</td>
+                  <td>
+                    {% if enseignant.isVerified == '0' %}
+                  <div class="badge badge-error">Not Verified</div>
+                    {% elseif enseignant.isVerified == '1' %}
+                  <div class="badge badge-success">Verified</div>
+                   {% endif %}
+                 
+                  </td>
+                  <td><a href="#" class="btn btn-action btn-secondary">Supprimer</a></td>
+                  </tr>
+
+                {% endfor %}
+                
+              </table>
+              {% else %}
+                  <p style="color: white; font-size: 18px;">Aucun enseignant(e) enrégistré!!!</p>
+                  <p>
+                    <a href="{{path('app_register')}}" class="btn btn-action btn-secondary">Ajouter un(e) enseignant(e) </a>
+                  </p>
+              {% endif %}
+            </div>
+          </div>
+
+    
+    </body>
+</html>

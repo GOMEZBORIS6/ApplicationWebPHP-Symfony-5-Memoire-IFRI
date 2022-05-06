@@ -1,0 +1,39 @@
+{% extends 'baseenseignant.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("assets/css/show.css") }}">
+
+{% endblock %}
+{% block title %}Informations sur la Programmation
+	{{monpaniers.ecue.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="slider">
+		<div class="callbacks_container">
+			<ul class="rslides" id="slider4">
+				<li>
+					<div class="slider-img one-img">
+						<div class="bodyprog">
+							<div class="main">
+								<div class="title">Programmation #{{monpaniers.id}}</div>
+								<!-- debut semaine et fin semaine -->
+								<h1 data-blast="color">Semaine :{{ monpaniers.semainedeb|date("d/m/Y") ~ " au " ~ monpaniers.semainefin|date("d/m/Y")}}</h1>
+								<p>Jour :
+									{{monpaniers.jour.libjour}}</p>
+								<!-- debut heure et fin heure -->
+								<p>Heure:
+									{{monpaniers.heuredeb|date("H:i:s") ~ " au " ~ monpaniers.heurefin|date("H:i:s")}}</p>
+								<p>Classe :
+									{{monpaniers.classeetudiant.name}}</p>
+								<p>Cours :
+									{{monpaniers.ecue.name }}</p>
+								<hr>
+								<a href="{{path('paniers')}}" class="btn btn-dark" data-blast="bgColor">Retour</a>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	{% endblock %}

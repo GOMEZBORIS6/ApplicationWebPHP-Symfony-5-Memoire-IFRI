@@ -1,0 +1,127 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %} IFRI-UAC &mdash; Register  {% endblock %}
+
+{% block stylesheets%}
+<link rel="stylesheet" type="text/css" href="{{ asset("inscription/css/inscrire.css") }}">
+
+<style>
+  .alert {
+    padding: 10px;
+    color: white;
+    text-align: center;
+  }
+  .alert-success {
+    background-color: green;
+  }
+  .alert-error {
+    background-color: red;
+  }
+  .alert-info {
+    background-color: blue;
+  }
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="main-content"> 
+  <section class="section">
+    <h1 class="section-header">
+      <div>Register</div>
+    </h1>
+    <div class="section-body">
+      {% for type, messages in app.flashes(['success', 'error', 'info']) %}
+      {% for message in messages %}
+          <div class="alert alert-{{ type }} mb-0" role="alert">
+            {{ message }}
+          </div>
+      {% endfor %}
+     {% endfor %}
+     <div class="row">
+      <div class="bodyprog" >
+        <div class="main" style="position: relative; top:20px; left:10px;">
+            <div class="title">Registration Form</div>
+            <form method="POST">
+                {{form_start(registrationForm)}}
+
+                <div id="name">
+                    <h2 class="name">Name :</h2>
+                    {{form_widget(registrationForm.lastname, {'attr': {'style':'width:250px; position: relative; left: 215px; top: -37px;'}})}}<br>
+
+                    <label class="firstlabel" style="position: relative; color: black; text-transform: capitalize; font-size: 14px; left: 215px; top: -58px;
+                                                                ">{{form_label(registrationForm.lastname)}}</label>
+
+                    {{form_widget(registrationForm.firstname,  {'attr': {'style':'width:250px; position: relative; left: 480px; top: -138px;'}})}}<br>
+
+                    <label class="lastlabel" style="position: relative; color: black; text-transform: capitalize; font-size: 14px; left: 480px; top: -160px;
+                                                                 ">{{form_label(registrationForm.firstname)}}</label>
+                </div>
+                
+                <div id="name">
+                    <h2 class="named">Phone & Gender :</h2>
+
+                    {{form_widget(registrationForm.phone,  {'attr': {'style':'width:250px; position: relative; left: 215px; top: -38px;'}})}}<br>
+
+                    <label class="lastlabel" style="position: relative; color: black; text-transform: capitalize; font-size: 14px; left: 215px; top: -62px;
+                                                                 ">{{form_label(registrationForm.phone)}}</label>
+                    
+                    <!-- <h2 class="named">Gender :</h2> -->
+
+                    {{form_widget(registrationForm.sexe,  {'attr': {'style':'width:250px; position: relative; left: 480px; top: -138px;'}})}}<br>
+
+                    <label class="lastlabel" style="position: relative; color: black; text-transform: capitalize; font-size: 14px; left: 480px; top: -160px;
+                                                                 ">{{form_label(registrationForm.sexe)}}</label>
+        
+                </div>
+
+                <div id="name">
+                    <h2 class="named">Username & Email:</h2>
+
+                    {{form_widget(registrationForm.username,  {'attr': {'style':'width:250px; position: relative; left: 215px; top: -38px;'}})}}<br>
+
+                    <label class="lastlabel" style="position: relative; color: black; text-transform: capitalize; font-size: 14px; left: 215px; top: -62px;
+                                                                 ">{{form_label(registrationForm.username)}}</label>
+                                                                 
+                    {{form_widget(registrationForm.email,  {'attr': {'style':'width:250px; position: relative; left: 480px; top: -138px;'}})}}<br>
+
+                    <label class="lastlabel" style="position: relative; color: black; text-transform: capitalize; font-size: 14px; left: 480px; top: -160px;
+                                                                 ">{{form_label(registrationForm.email)}}</label>
+                </div>
+        
+
+                <div id="name">
+                    <h2 class="named">Password :</h2>
+
+                    {{form_widget(registrationForm.plainpassword,  {'attr': {'style':'width:250px; position: relative; left: 215px; top: -40px;'}})}}<br>
+
+                    {# <label class="lastlabel" style="position: relative; color: #E5E5E5; text-transform: capitalize; font-size: 14px; left: 160px; top: -62px;
+                                                                 ">{{form_label(registrationForm.plainpassword)}}</label> #}
+                </div>
+
+                <div id="name">
+                    <button data-blast="bgColor" type="submit" style="  height: 50px; display: flex; justify-content: center;  align-items: center; outline: none; color: white; cursor: pointer; transition: 0.25px;
+                                                                width: 100px; position: relative; left: 500px; top: -75px; border-radius: 12px; border: 2px solid none;
+                                                                background:blue; " >Sign In</button>
+
+                    <button  type="reset" style="  height: 50px; display: flex; justify-content: center;  align-items: center; outline: none; color: white; cursor: pointer; transition: 0.25px;	
+                                                        width: 90px; position: relative; left: 630px; top: -125px; border-radius: 12px; border: 2px solid none;
+                                                       background:black; ">Annuler</button>
+                    
+                </div>
+
+             {{form_end(registrationForm)}}
+            </form>
+        </div>
+    </div> 
+    <div>
+      
+     
+    </div>
+  </section>
+</div>
+
+ 
+{% endblock %}
+
+ 

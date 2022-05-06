@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.bodyprog{
+	background:transparent;
+	background-position: center ;
+	background-size: cover;
+	font-family: sans-serif;
+	margin-top: 0px;
+    
+}
+/* .regform{
+	width: 800px;
+	background-color: rgb(0, 0, 0, 0.6);
+	margin: auto;
+	color: #ffff;
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	border-radius: 15px 15px 0px 0px;
+} */
+.main{
+	background-color: rgb(0, 0, 0, 0.5);
+	width: 800px;
+    position: absolute;
+    top: 24%;
+    left: 20%;
+    right: 25%;
+	/* margin: auto; */
+    
+}
+
+.main .title {
+
+    margin-left: 20px;
+    font-size: 25px;
+    position: relative;
+    color: #fff;
+}
+
+.main .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100px;
+    background: lime;
+}
+
+form{
+	padding: 10px;
+}
+
+#name{
+	width: 100%;
+	height: 100px;
+}
+
+#name{
+	width: 100%;
+	height: 100px;
+}
+#named{
+	width: 100%;
+	height: 150px;
+}
+
+
+.name{
+	margin-left: 25px;
+	margin-top: 30px;
+	width: 125px;
+	color: white;
+	font-size: 18px;
+	font-weight: 700;
+}
+.named{
+    margin-left: 25px;
+	margin-top: -15px;
+	width: 125px;
+	color: white;
+	font-size: 18px;
+	font-weight: 700;
+}
+.nam{
+    margin-left: 400px;
+	margin-top: 10px;
+	width: 125px;
+	color: white;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.firstname{
+	position: relative;
+	left: 200px;
+	top: -37px;
+	line-height: 40px;
+	border-radius: 6px;
+	padding: 0 22px;
+	font-size: 16px;
+}
+
+.lastname{
+	position: relative;
+	left: 417px;
+	top: -80px;
+	line-height: 40px;
+	border-radius: 6px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+}
+
+.firstlabel{
+	position: relative;
+	color: #E5E5E5;
+	text-transform: capitalize;
+	font-size: 14px;
+	left: 203px;
+	top: -45px;
+
+}
+.lastlabel{
+	position: relative;
+	color: #E5E5E5;
+	text-transform: capitalize;
+	font-size: 14px;
+	left: 492px; /*175px*/
+	top: -76px; /*-45px*/
+}
+
+button{
+	/* background-color: rgb(92, 100, 92); */
+	display: block;
+	/* margin: 20px 0px 0px 20px; */
+	text-align: center;
+	border-radius: 12px;
+	border: 2px solid none;
+	/* padding: 14px 110px; */
+	outline: none;
+	color: white;
+	cursor: pointer;
+	transition: 0.25px;
+}
+button:hover{
+	background-color: black;
+}

@@ -1,0 +1,399 @@
+{% block body %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+
+      section {
+        margin-left: 10px;
+        width: 75%;
+      }
+      table {
+        vertical-align: top;
+        /* width: 100%; */
+        color: black;
+        font-family: helvetica;
+        line-height: 5mm;
+        border-collapse: collapse;
+        /* #717375 */
+    }
+    h2 { 
+      margin: 0; 
+      padding: 0; 
+    }
+    p { 
+      margin: 5px; 
+    }
+    
+    .border th {
+        border: 1px solid #000; 
+        color: white;
+        background: #000;
+        padding: 5px;
+        font-weight: normal;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .border td {
+        border: 1px solid #000;
+        padding: 5px 10px;
+        text-align: center;
+        font-weight: bolder; 
+        color: black;
+    }
+    .no-border {
+        border-right: 1px solid #CFD1D2;
+        border-left: none;
+        border-top: none;
+        border-bottom: none;
+    }
+    .space { padding-top: 250px;  }
+    
+    .p10p { 
+      width: 9%;
+     }
+    .p16p { 
+      width: 16%; 
+    }
+    .p20p { 
+      width: 20%; 
+    }
+    .p25p { 
+      width: 25%; 
+      text-align: right;
+    }
+    .p40p { 
+      width: 40%;
+      position: relative; 
+      top: 20px;
+      }
+    .p50p { 
+      width: 50%; }
+    .p60p { 
+      width: 60%;
+      position: relative; 
+      top: 20px;
+    }
+    .p75p { 
+      width: 65%; 
+    }
+    
+    .h20h { 
+      height: 20px; 
+    }
+    .h40h { 
+      height: 40px; 
+    }
+    .h60h { 
+      height: 40px; 
+    }
+
+    .toto {
+      margin-left: 30px;
+    }
+    .tata {
+      margin-top: 50px;
+    }
+
+    .frappe {
+      padding-top: 15px;
+    }
+
+    label {
+      font-weight: bolder;
+    }
+
+    select {
+      width: 50%;
+      height: 30px;
+    }
+    </style>
+  </head>
+  <body>
+    
+ 
+<main>
+  <section >
+    <table>
+      <tr>
+        <td class="p60p">
+          <strong
+            >Responsable : {{ app.user.firstname | upper }}
+            {{ app.user.lastname | upper }}</strong
+          ><br />
+          <strong>E-mail :</strong> {{ app.user.email }}<br />
+          <strong>BP :</strong> {#{ app.user.loginCount }#}
+        </td>
+        <td class="p40p">
+          <strong class="toto">
+            Instititut de Formation et de Recherche en Informatique</strong
+          ><br />
+          <p class="toto">
+            Direction des Affaires Academiques et Administratives
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    <table class="tata">
+      {% for circuit in call %}
+      <tr>
+        <td class="p75p">
+          <h2>
+            Emploi du temps de : {{ circuit.classeetudiant.name | upper }}
+          </h2>
+        </td>
+        <td class="p25p">
+          Emis le {{ "now"|date("d/m/Y") }}
+        </td>
+      </tr>
+
+      <tr>
+        <td class="frappe" colspan="2">
+          <strong>Semaine du :</strong>
+          {{ circuit.semainedeb|date("d/m/Y") ~ " au " ~ circuit.semainefin|date("d/m/Y") }}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <table class="border">
+      <thead>
+        <tr>
+          <th class="p20p">HORAIRE</th>
+          <th class="p16p">LUNDI</th>
+          <th class="p16p">MARDI</th>
+          <th class="p16p">MERCREDI</th>
+          <th class="p16p">JEUDI</th>
+          <th class="p16p">VENDREDI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="h60h">
+            8H00 - 12H00
+          </td>
+           {% for course in paniersclasse %} 
+          {% if course.heurefin|date('H') <= 14 %} 
+          {% if course.jour.libjour == 'Lundi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% elseif course.jour.libjour == 'Mardi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% elseif course.jour.libjour == 'Mercredi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% elseif course.jour.libjour == 'Jeudi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% elseif course.jour.libjour == 'Vendredi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% else %}
+          <td class="h60h">
+            <p>Libre</p>
+            <!-- Matiére : Aucune<br>
+                                                        Ensg. : Aucun<br>
+                                                        Salle : Aucune<br> -->
+          </td>
+          {% endif %} {% endif %} {% endfor %}
+        </tr>
+        <tr>
+          <th class="p20p">12H00 - 14H00</th>
+          <th class="p16p">PAUSE</th>
+          <th class="p16p">PAUSE</th>
+          <th class="p16p">PAUSE</th>
+          <th class="p16p">PAUSE</th>
+          <th class="p16p">PAUSE</th>
+        </tr>
+        <tr>
+          <td class="h60h" style="font-weight: bolder; color: black">
+            14H00 - 19H00
+          </td>
+          {% for course in paniersclasse %} {% if course.heurefin|date('H') >=
+          14 %} {% if course.jour.libjour == 'Lundi' %}
+
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% elseif course.jour.libjour == 'Mardi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% elseif course.jour.libjour == 'Mercredi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% elseif course.jour.libjour == 'Jeudi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% elseif course.jour.libjour == 'Vendredi' %}
+          <td class="h60h">
+            <strong>Mat. :</strong> {{ course.ecue.name }}<br />
+            <strong>Ensg. :</strong> {{ course.user.lastname }}<br />
+            <strong>Heure : </strong>
+            {{ course.heuredeb|date("H:i") ~ " à " ~ course.heurefin|date("H:i")
+            }}<br />
+            <label for="pet-select">Salle : </label>
+
+            <select name="pets" id="pet-select" require="required">
+              <option selected="disabled" disabled>--Choisir la salle--</option>
+              <option value="A2-1">A2-1</option>
+              <option value="A2-2">A2-2</option>
+              <option value="MOOCS">MOOCS</option>
+              <option value="Telethon">Telethon</option>
+              <option value="Labo-IFRI(EPAC)">Labo-IFRI(EPAC)</option>
+            </select>
+          </td>
+          {% else %}
+          <td class="h60h">
+            <p>Libre</p>
+            <!-- Matiére : Aucune<br>
+                                                        Ensg. : Aucun<br>
+                                                        Salle : Aucune<br> -->
+          </td>
+          {% endif %} {% endif %} {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>
+{% endblock %}
