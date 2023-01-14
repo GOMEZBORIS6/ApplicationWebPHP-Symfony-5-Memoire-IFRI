@@ -1,0 +1,18 @@
+Ordre de démarrage:
+1.Ouvrir Wampserver sur le PC
+2-Ouvrir le dossier du projet dans un IDE
+3-Dans votre Terminal=====>
+  -DEMARRAGE DU SERVEUR  Symphony ===>code : symfony serve -d
+  -DEMARRAGE DU SERVEUR  Proxy ====> code : symfony proxy:start
+4-Allez dans la configuration automatique du Proxy dans le paramètre de votre PC,
+ensuite activer "Utilisez un script de configuration" 
+et coller ===> http://127.0.0.1:7080/proxy.pac  dans l'adresse du script et enregister.
+5- Lancer la Page de démarrage dans votre Navigateur : https://memoireacceuil.wip/emploi
+6-Espace Utilisateur ou Enseignant
+Username == Gomezboris 
+Mot de passe == Boris1999
+Email verification: Mailtrap.io
+7-Espace Administrateur
+Administrateur : 
+username== admin 
+mot de passe== admin1999
